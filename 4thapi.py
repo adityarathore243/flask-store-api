@@ -21,6 +21,8 @@ jwt= JWT(app,authenticate,identity)
 def create_tables():
     db.create_all()
 
+db.init_app(app)
+
 api.add_resource(Stores,'/stores')
 api.add_resource(Store,'/store/<string:name>')
 
@@ -29,5 +31,4 @@ api.add_resource(Item,'/item/<string:name>')
 api.add_resource(user_register,'/register')
 
 if __name__=='__main__':###while importing file it will execute our code first at last it will run app
-    db.init_app(app)
     app.run(port=5000, debug=True)
